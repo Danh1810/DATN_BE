@@ -1,0 +1,28 @@
+'use strict';
+const { Model } = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Levels extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // Define associations here if needed
+      Levels.belongsToMany(models.JobPosts, { through :"JobPostLevels",foreignKey: 'level_id' ,as :'Level_Jobpost'});
+
+    }
+  }
+  Levels.init({
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false, // Có thể chỉnh sửa tùy thuộc vào yêu cầu của bạn
+    },
+  }, {
+    sequelize,
+    modelName: 'Levels',
+    tableName: 'Levels',
+    timestamps: true, // Sẽ tự động thêm createdAt và updatedAt
+  });
+  return Levels;
+};
