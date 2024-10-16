@@ -1,15 +1,15 @@
 'use strict';
 const { Model } = require('sequelize');
-const jobSeekers = require('../migrations/job seekers');
+
 module.exports = (sequelize, DataTypes) => {
-  class JobSeekers extends Model {
+  class Nguoitimviec extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      JobSeekers.belongsTo(models.Users, {
+      Nguoitimviec.belongsTo(models.Users, {
         foreignKey: 'user_id',
         as: 'user_seeker',
       });
@@ -23,12 +23,12 @@ module.exports = (sequelize, DataTypes) => {
       // });
     }
   }
-  JobSeekers.init({
+  Nguoitimviec.init({
     email: {
       type: DataTypes.STRING,
       allowNull: false, // Có thể chỉnh sửa tùy thuộc vào yêu cầu của bạn
     },
-    username: {
+    ten: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    gender: {
+    gioitinh: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
@@ -49,9 +49,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'JobSeekers',
-    tableName: 'JobSeekers',
+    modelName: 'Nguoitimviec',
+    tableName: 'Nguoitimviec',
     timestamps: true, // Sẽ tự động thêm createdAt và updatedAt
   });
-  return JobSeekers;
+  return Nguoitimviec;
 };

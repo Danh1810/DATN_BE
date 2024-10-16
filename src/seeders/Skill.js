@@ -2,34 +2,34 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Skills', [
+    await queryInterface.bulkInsert('Kynang', [
       {
         id: 1,
-        name: 'JavaScript',
+        ten: 'JavaScript',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         id: 2,
-        name: 'Python',
+        ten: 'Python',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         id: 3,
-        name: 'Java',
+        ten: 'Java',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         id: 4,
-        name: 'SQL',
+        ten: 'SQL',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         id: 5,
-        name: 'DevOps',
+        ten: 'DevOps',
         createdAt: new Date(),
         updatedAt: new Date(),
       }
@@ -37,6 +37,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Skills', null, {});
+    await queryInterface.bulkDelete('Kynang', null, {});
   }
 };

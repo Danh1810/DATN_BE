@@ -2,34 +2,34 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Levels', [
+    await queryInterface.bulkInsert('Caobac', [
       {
         id: 1,
-        name: 'Junior',
+        ten: 'Junior',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         id: 2,
-        name: 'Mid-level',
+        ten: 'Mid-level',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         id: 3,
-        name: 'Senior',
+        ten: 'Senior',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         id: 4,
-        name: 'Lead',
+        ten: 'Lead',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         id: 5,
-        name: 'Principal',
+        ten: 'Principal',
         createdAt: new Date(),
         updatedAt: new Date(),
       }
@@ -37,6 +37,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Levels', null, {});
+    await queryInterface.bulkDelete('Capbac', null, {});
   }
 };

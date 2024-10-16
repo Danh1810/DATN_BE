@@ -1,44 +1,40 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Applications extends Model {
+  class Luucongviec extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // Một Application thuộc về một JobPost
-      // Applications.belongsTo(models.JobPost, {
-      //   foreignKey: 'JobPost_id',
+      // Một SaveJob thuộc về một JobPost
+      // SaveJobs.belongsTo(models.JobPost, {
+      //   foreignKey: 'Jobpost_id',
       //   as: 'jobPost',
       // });
 
-      // Một Application thuộc về một JobSeeker
-      // Applications.belongsTo(models.JobSeeker, {
+      // Một SaveJob thuộc về một JobSeeker
+      // SaveJobs.belongsTo(models.JobSeekers, {
       //   foreignKey: 'seeker_id',
       //   as: 'jobSeeker',
       // });
     }
   }
-  Applications.init({
-    file: {
-      type: DataTypes.STRING,
-    },
-    NgayNop: {
-      type: DataTypes.DATE,
-    },
-    seeker_id: {
+  Luucongviec.init({
+    Jobpost_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    JobPost_id: {
+    nguoitimviec_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
   }, {
     sequelize,
-    modelName: 'Applications',
-    tableName: 'Applications',
+    modelName: 'Luucongviec',
+    tableName: 'Luucongviec',
     timestamps: true, // Sẽ tự động thêm createdAt và updatedAt
   });
-  return Applications;
+  return Luucongviec;
 };

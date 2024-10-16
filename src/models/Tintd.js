@@ -1,7 +1,7 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class JobPosts extends Model {
+  class Tintuyendung extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,12 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // Một JobPost thuộc về một Employer
-      JobPosts.belongsTo(models.Employers, {
-        foreignKey: 'employers_id',
+      Tintuyendung.belongsTo(models.Nhatuyendung, {
+        foreignKey: 'nhatuyendung_id',
         as: 'employer',
       });
-      JobPosts.belongsToMany(models.Skills, {through :"JobPostSkills",  foreignKey: 'jobpost_id' ,as :'skill'});
-      JobPosts.belongsToMany(models.Levels, {through :"JobPostLevels",  foreignKey: 'jobpost_id',as : 'level' });
+      Tintuyendung.belongsToMany(models.Kynang, {through :"Tintd_Kynang",  foreignKey: 'tintuyendung_id' ,as :'skill'});
+      Tintuyendung.belongsToMany(models.Capbac, {through :"Tintd_Capbac",  foreignKey: 'tintuyendung_id',as : 'level' });
 
     //  JobPosts.hasMany(models. Application,{
     //     foreignKey : 'JobPost_id',
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     //   });
     }
   }
-  JobPosts.init({
+  Tintuyendung.init({
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -37,21 +37,21 @@ module.exports = (sequelize, DataTypes) => {
     Ngayhethan: {
       type: DataTypes.DATE,
     },
-    location: {
+    trangthai: {
       type: DataTypes.STRING,
     },
-    status: {
+    mucluong: {
       type: DataTypes.STRING,
     },
-    employers_id: {
+    nhatuyendung_id: {
       type: DataTypes.INTEGER,
     },
 
   }, {
     sequelize,
-    modelName: 'JobPosts',
-    tableName: 'JobPosts',
+    modelName: 'Tintuyendung',
+    tableName: 'Tintuyendung',
     timestamps: true, // Tự động thêm createdAt và updatedAt
   });
-  return JobPosts;
+  return Tintuyendung;
 };

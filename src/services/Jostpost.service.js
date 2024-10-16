@@ -5,23 +5,23 @@ const {Op} = require('sequelize')
 const getAllJobpost  = async () => {
     
       // Fetch the user from the database based on username and include their associated role (Group)
-      const jbp = await db.JobPosts.findAll({
+      const jbp = await db.Tintuyendung.findAll({
       
         include: [
           {
-            model: db.Employers, // Assuming Roles is the table for user roles
+            model: db.Nhatuyendung, // Assuming Roles is the table for user roles
             as: "employer",     // Ensure that 'as' matches the alias defined in your model associations
           },
           {
-            model: db.Skills, // Assuming Roles is the table for user roles
+            model: db.Kynang, // Assuming Roles is the table for user roles
             as :'skill', 
             through : { attributes: [] }, // Không hiển thị bảng trung gian
-            attributes: ['id','name'] // Lấy tên các kỹ năng   // Ensure that 'as' matches the alias defined in your model associations
+            attributes: ['id','ten'] // Lấy tên các kỹ năng   // Ensure that 'as' matches the alias defined in your model associations
           },{
-            model: db.Levels, // Assuming Roles is the table for user roles
+            model: db.Capbac, // Assuming Roles is the table for user roles
             as :'level',  
             through : { attributes: [] }, // Không hiển thị bảng trung gian
-            attributes: ['id','name'] // Lấy tên các kỹ năng   // Ensure that 'as' matches the alias defined in your model associations
+            attributes: ['id','ten'] // Lấy tên các kỹ năng   // Ensure that 'as' matches the alias defined in your model associations
           }
         
         ],
@@ -36,22 +36,22 @@ const getAllJobpost  = async () => {
     const getJobpostByID  = async (id) => {
     
       // Fetch the user from the database based on username and include their associated role (Group)
-      const jbp = await db.JobPosts.findOne({
+      const jbp = await db.Tintuyendung.findOne({
         where :{id:id
 },
       
         include: [
           {
-            model: db.Employers, // Assuming Roles is the table for user roles
+            model: db.Nhatuyendung, // Assuming Roles is the table for user roles
             as: "employer",     // Ensure that 'as' matches the alias defined in your model associations
           },
           {
-            model: db.Skills, // Assuming Roles is the table for user roles
+            model: db.Kynang, // Assuming Roles is the table for user roles
             as :'skill', 
             through: { attributes: [] }, // Không hiển thị bảng trung gian
             // attributes: ['name'] // Lấy tên các kỹ năng    // Ensure that 'as' matches the alias defined in your model associations
           },{
-            model: db.Levels, // Assuming Roles is the table for user roles
+            model: db.Capbac, // Assuming Roles is the table for user roles
             as : 'level',  
             through: { attributes: [] }, // Không hiển thị bảng trung gian
             // attributes: ['name'] // Lấy tên các kỹ năng   // Ensure that 'as' matches the alias defined in your model associations
@@ -69,10 +69,10 @@ const getAllJobpost  = async () => {
     };
     const searchJobPostsByKeyword = async (keyword) => {
       
-        const jobPosts = await db.JobPosts.findAll({
+        const jobPosts = await db.Tintuyendung.findAll({
           include: [
             {
-              model: db.Skills,
+              model: db.Kynang,
               as: 'skill',
               // where: keyword ? { name: { [Op.like]: `%${keyword}%` } } : {},
               attributes: ['name'],
@@ -80,7 +80,7 @@ const getAllJobpost  = async () => {
               required: false, // Không bắt buộc phải có Skills
             },
             {
-              model: db.Employers,
+              model: db.Nhatuyendung,
               as: 'employer',
               // where: keyword ? { name: { [Op.like]: `%${keyword}%` } } : {},
               required: false, // Không bắt buộc phải có Employers

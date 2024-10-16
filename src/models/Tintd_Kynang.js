@@ -3,28 +3,28 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class JobPostSkills extends Model {
+  class Tintd_Kynang extends Model {
     static associate(models) {
-      JobPostSkills.belongsTo(models.JobPosts, {
-        foreignKey: 'jobpost_id',
+      Tintd_Kynang.belongsTo(models.Tintuyendung, {
+        foreignKey: 'tintuyendung_id',
         as: 'jobPostst'
       });
-      JobPostSkills.belongsTo(models.Skills, {
-        foreignKey: 'skill_id',
+     Tintd_Kynang.belongsTo(models.Kynang, {
+        foreignKey: 'kynang_id',
         as: 'sdfghhjhh'
       });
     }
   }
 
-  JobPostSkills.init({
-    jobpost_id: {
+  Tintd_Kynang.init({
+    tintuyendung_id: {
       type: DataTypes.INTEGER,
       // references: {
       //   model: 'JobPosts', // name of the target model
       //   key: 'id', // key in the target model
       // },
     },
-    skill_id: {
+    kynang_id: {
       type: DataTypes.INTEGER,
       // references: {
       //   model: 'Skills', // name of the target model
@@ -33,10 +33,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'JobPostSkills',
-    tableName: 'JobPostSkills',
+    modelName: 'Tintd_Kynang',
+    tableName: 'Tintd_Kynang',
     timestamps: true, // Optional: set to true if you want createdAt/updatedAt
   });
 
-  return JobPostSkills;
+  return Tintd_Kynang;
 };

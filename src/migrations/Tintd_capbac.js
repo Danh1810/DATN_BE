@@ -2,19 +2,19 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('JobPostLevels', {
+    await queryInterface.createTable('Tintd_Capbac', {
         id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
             type: Sequelize.INTEGER,
           },
-      jobpost_id: {
+      tintuyendung_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
       
       },
-      level_id: {
+      capbac_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
        
@@ -30,6 +30,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('JobPostLevels');
+    await queryInterface.dropTable('Tintd_Capbac');
   }
 };

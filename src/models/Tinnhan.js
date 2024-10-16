@@ -1,7 +1,7 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Messages extends Model {
+  class Tinnhan extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       // });
     }
   }
-  Messages.init({
+  Tinnhan.init({
     Noidung: {
       type: DataTypes.STRING,
       allowNull: false, // Có thể chỉnh sửa tùy thuộc vào yêu cầu của bạn
@@ -30,19 +30,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    employers_id: {
+    nhatuyendung_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    seeker_id: {
+    nguoitimviec_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
   }, {
     sequelize,
-    modelName: 'Messages',
-    tableName: 'Messages',
+    modelName: 'Tinnhan',
+    tableName: 'Tinnhan',
     timestamps: true, // Sẽ tự động thêm createdAt và updatedAt
   });
-  return Messages;
+  return Tinnhan;
 };

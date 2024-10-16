@@ -1,7 +1,7 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Employers extends Model {
+  class Nhatuyendung extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // Một Employer có nhiều JobPosts
-      Employers.hasMany(models.JobPosts, {
-        foreignKey: 'employers_id',
+      Nhatuyendung.hasMany(models.Tintuyendung, {
+        foreignKey: 'tintuyendung_id',
         as: 'jobPosts',
       });
 
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       // });
 
       // Một Employer thuộc về một User
-      Employers.belongsTo(models.Users, {
+      Nhatuyendung.belongsTo(models.Users, {
         foreignKey: 'user_id',
         as: 'user',
       });
@@ -40,11 +40,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    profession: {
+    nganhnghe: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    address: {
+    diachi: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -58,10 +58,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'Employers',
-    tableName: 'Employers',
+    modelName: 'Nhatuyendung',
+    tableName: 'Nhatuyendung',
     timestamps: true, // Sẽ tự động thêm createdAt và updatedAt
   });
-  return Employers;
+  return Nhatuyendung;
 };
 

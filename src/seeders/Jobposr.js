@@ -1,45 +1,32 @@
-'use strict';
-
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('JobPosts', [
+    return queryInterface.bulkInsert("Tintuyendung", [
       {
-        id: 1,
-        title: 'Frontend Developer',
-        mota: 'Develop and maintain web applications using React.js.',
-        Ngayhethan: new Date('2024-12-01'),
-        location: 'Hanoi, Vietnam',
-        employers_id: 1,  // Giả định employer_id 1 đã tồn tại trong bảng Employers
-        status: 'active',
+        tieude: "Tuyển dụng lập trình viên Frontend",
+        mota: "Cần tuyển lập trình viên Frontend có kinh nghiệm với React.",
+        Ngayhethan: new Date("2024-12-31"),
+        nhatuyendung_id: 1,
+        trangthai: "Đang tuyển",
+        diachi: "123 Đường XYZ, Hà Nội",
+        mucluong: "20-25 triệu",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        id: 2,
-        title: 'Backend Developer',
-        mota: 'Build and maintain scalable APIs using Node.js.',
-        Ngayhethan: new Date('2024-11-20'),
-        location: 'Ho Chi Minh City, Vietnam',
-        employers_id: 2,  // Giả định employer_id 2 đã tồn tại trong bảng Employers
-        status: 'active',
+        tieude: "Tuyển dụng kỹ sư phần mềm Backend",
+        mota: "Cần tuyển kỹ sư Backend có kinh nghiệm với Node.js và MongoDB.",
+        Ngayhethan: new Date("2024-11-30"),
+        nhatuyendung_id: 2,
+        trangthai: "Đang tuyển",
+        diachi: "456 Đường ABC, TP. Hồ Chí Minh",
+        mucluong: "30-35 triệu",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-      {
-        id: 3,
-        title: 'DevOps Engineer',
-        mota: 'Implement CI/CD pipelines and manage cloud infrastructure.',
-        Ngayhethan: new Date('2024-10-15'),
-        location: 'Da Nang, Vietnam',
-        employers_id: 3,  // Giả định employer_id 3 đã tồn tại trong bảng Employers
-        status: 'active',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }
-    ], {});
+    ]);
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('JobPosts', null, {});
-  }
+    return queryInterface.bulkDelete("Tintuyendung", null, {});
+  },
 };
